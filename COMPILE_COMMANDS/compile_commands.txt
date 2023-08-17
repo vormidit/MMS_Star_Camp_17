@@ -1,0 +1,71 @@
+gcc prog.o
+
+
+Compilation steps: preprocessor, compiler, assembler, linker
+
+
+gcc  prog.c -E -o prog.i
+gcc -E  --> Preprocessor, but don't compile
+
+
+
+gcc -S prog.i -o prog.s
+gcc -S  --> Compile but don't assemble
+
+
+
+gcc -c prog.s -o prog.o
+gcc -c  --> Preprocess, compile, and assemble, but don't link
+
+
+
+Select output filename:
+gcc main.c -o progName
+
+
+
+Save all intermidiate files from each compilation step: 
+gcc -save-temps main.c
+
+
+
+Debugging: 
+Produce debugging information in the operating system’s native format (stabs, COFF, XCOFF, or DWARF). GDB can work with this debugging information.
+gcc -g
+
+
+
+Generate all warnings:
+gcc -Wall main.c -o Result
+
+
+
+Turn warnings into errors:
+gcc -Wall -Werror main.c -o Result
+
+
+
+Sanitizer: During runtime - generate memory related error information.
+Program is much slower. Compilation takes more time.
+
+
+
+Compile with sanitizer:
+* Must link statically to libasan
+* Must be in debug mode
+* gcc -g -fsanitize=address prog.c -o prog -static-libasan -Wall -Werror
+
+
+
+Address sanitizer detects many memory related errors, such as:
+* use after free
+* memory leaks
+* heap overflow
+* out of bounds access
+
+
+Optimization levels:
+gcc -O0 main.c -o prog
+gcc -O1 main.c -o prog
+gcc -O2 main.c -o prog
+gcc -O3 main.c -o prog

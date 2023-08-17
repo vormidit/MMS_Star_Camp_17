@@ -10,7 +10,7 @@ unsigned long long file_size_bytes;
 unsigned long long child_byte_count;
 char *fname;
 // One pipe for each child
-int pipes_fd_list[K][2];
+int pipe1[2];
 
 void child_fun(int child_index) {
     printf("STARTED CHILD with child_index: %d\n", child_index);

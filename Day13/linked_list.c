@@ -44,7 +44,7 @@ void push_back(Data new_data, Node **head){
     }
     Node *cur_node = *head;
     
-    while(cur_node->next){
+    while(!!cur_node->next){
         
         cur_node = cur_node->next;
     }

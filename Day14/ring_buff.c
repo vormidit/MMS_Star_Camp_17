@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-#define N 10
+#define N 8
 
 double arr[N];
 size_t start_index=0, end_index=0;
@@ -48,7 +48,8 @@ void dequeue(){
         printf("Queue is empty!");
         return;
     }
-    arr[start_index%N] = 0;
+    //arr[(start_index & (N-1))] = 0;
+    arr[start_index%N] = 0;       
     start_index++;
 }
 
